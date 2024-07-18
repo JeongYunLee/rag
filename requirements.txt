@@ -1,0 +1,13 @@
+PyMuPDFb==1.24.3
+openai
+tiktoken
+chromadb
+langchain
+langchain-community
+rank_bm25
+gradio
+kiwipiepy
+pdfplumber
+langchain_openai
+streamlit-feedback
+trubrics>=1.4.3

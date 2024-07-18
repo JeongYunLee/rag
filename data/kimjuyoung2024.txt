@@ -1,0 +1,1011 @@
+Analysis of Address of Things(AOT) Assignment and its Policy 
+Implications
+*
+김지영*ㆍ이지원**
+Kim, Ji YoungㆍLee, Ji Won 
+要  旨
+영국, 프랑스, 호주, 뉴질랜드 등에서 주소가 국가의 중요한 공간정보로 관리하고 있으며, 우리나라에서도 주소가 
+기본공간정보로 고시되어 있다. 또한 유럽이나 호주 등에서는 건물뿐만 아니라 토지, 주차장이나 주차단위구획까
+지 주소가 부여될 수 있는 객체로 정의하고 있으며, 우리나라도 2021년 도로명주소법 개정을 통해 주요한 시설물
+이나 도로 주변의 공터 등에 주소를 부여할 수 있도록 하였다. 특히, 사물주소는 도로명주소가 부여되는 건물등에
+해당하지 않은 시설물의 위치를 특정하는 정보로 정의되어 있으며, 도로명과 기초번호를 활용하여 주소가 부여된
+다. 사물주소에 대한 연구는 꾸준히 진행되고 있으나 도로명주소법에 명시된 사물주소의 부여 기준이나 이를 전자
+지도로 구축한 주소정보기본도에 대하여 분석한 사례는 없다. 따라서 본 연구에서는 사물주소 체계 및 데이터 구
+축 현황 등을 분석하고, 국제표준을 기반으로 개선을 위한 정책을 제언하였다.
+핵심용어 : 도로명주소법, 상세주소, 건물 내부 시설물, 주소정보기본도
+Abstract
+Addresses are managed as important national spatial information in the UK, France, Australia, and New Zealand, 
+and addresses are also announced as framework data in Republic of Korea. In addition, in Europe and Australia, it 
+is defined as an object that can be addressed to land parcel, parking lots, parking unit blocks as well as buildings,
+and Republic of Korea also requires the address of a object or vacant lot near street through the Republic of Korea
+also revised the Street Name Address Act in 2021. In particular, the address of things (AOT) is defined as 
+information specifying the location of an object that does not correspond to a building to which a street name 
+address is assigned, and an address is assigned using the street name and basic number. Research on AOT is still
+in progress, and there is no case of analyzing the standards for assigning AOT or address information basemap 
+constructed with electronic maps. Therefore, in this study, the current status of the AOT system and construction 
+data was analyzed, and policies for improvement suggested based on international standards.
+Keywords : Street Name Address Law, Detailed Address, Objects Inside the Building, 
+Address Information Basemap
+1. 서 론
+국제표준화기구 
+international 
+organization 
+for 
+standardization(ISO)에서는 주소에 대한 개념모델을 
+제시하는 표준(ISO 19160-1, Addressing - Part 1: 
+Conceptual model)을 2015년에 제정하였으며, 영국, 
+프랑스 등의 유럽의 주요 국가나 호주 및 뉴질랜드 등
+에서는 주소를 국가의 주요한 공간정보로 관리하고 있
+다(ISO, 2015). 
+영국의 ordnance survey(OS)에서는 2002년부터 구
+축되고 있는 공간정보를 참조하기 위하여 일관되게 유
+지되는 OS MasterMap을 구축하고 있으며 주소(OS 
+MasterMap Address Layer 2)가 포함되어 있다(Kim, 
+2020). OS와 지방
+정
+부협
+회
+(local government association)
+와 함께 설립한 GeoPlace에서 연방정부 등에서 생성되
+는 주소를 취합하여 정제한 AddressBase를 생성한다. 
+Received: 2023.06.12, revised: 2023.06.21, accepted: 2023.06.25
+*
+정회원ㆍ 
+건국대학교 Social Eco Tech Institute 학술연구교수(Member, Research Professor, Social Eco Tech Institute, Konkuk 
+University, elliekim@konkuk.ac.kr)
+** 교신저자ㆍ 
+건국대학교 Social Eco Tech Institute 선임연구원(Corresponding Author, Senior Researcher, Social Eco Tech 
+Institute,  
+Konkuk University, vert802@konkuk.ac.kr)
+13
+대한공간정보학회지 
+(Journal of Korean Society for Geospatial Information Science)
+Vol.31 No.2 June 2023 pp.13-24
+연구논문
+ISSN: 1598-2955 (Print)
+ISSN: 2287-6693(Online)
+http://dx.doi.org/10.7319/kogsis.2023.31.2.013
+
+14
+김지영ㆍ이지원
+프랑스에서는 디지털 지적도(digitized cadastral map), 
+주소 등을 9개의 참조 데이터(reference data)를 정의하
+고 있다. 프랑스도 우리나라와 같이 법령에 의하여 지
+방자치단체에서 주소(bases adresse locales)를 생성하
+고 그 외 우편주소(La Poste) 등을 취합하여 국가주소
+(base adresse nationale)를 생성하여 제공한다(French 
+Republic, 2022). 호주 및 뉴질랜드의 토지정보위원회 
+australia new zealand land information council 
+(ANZLIC)에서는 주소(geocoded addressing)를 기초 
+공
+간
+데
+이
+터
+ 프
+레
+임
+워
+크
+(foundation spatial data framework)
+로
+ 지정하였다. 특히 1992년 호주 및 뉴질랜드의 연방
+정부 등이 함께 설립한 Geoscape Australia에서 연방정
+부나 공공기관에서 구축하는 주소를 취합하고 정제하
+여 좌표값을 포함한 지오코딩된 주소(geocoded 
+national address file, GNA-F)를 GeoScape 플랫폼을 
+통하여 제공하고 있다(Geoscape, 2022).
+우리나라에서도 2018년 ISO 19160-1을 한국어로 번
+역하여 국가표준(KS X ISO19160-1, 주소-제1부:개념
+모델)으로 제정하였으며(ministry of land, infrastructure 
+and transport(MOLIT), 2018), 도로명주소가  ｢국가공
+간정보기본법｣ 제19조 1항에 따라 기본공간정보에 포
+함되어 있다(MOLIT, 2015, 2017). 
+유럽연합 내 일부 국가에서는 필지 뿐만 아니라 주차
+장(car parks), 계류장(mooring places), street furniture 
+등에도 주소를 부여하고(infrastructure for spatial 
+information in europe(INSPIRE), 2014), 영국에서는 
+건물이 있는 토지(land on which a building is 
+situated)나 토지(land parcel), 주차장(car park), 주요 
+기념물(significant monument) 등도 주소를 부여할 수 
+있는 객체(addressable object)로 정의하고 있다(the 
+association for geographic information(AGI), 2023). 
+호주 뉴사우스웨일즈(new south wales, NSW) 주에서
+는 별도의 소유권이 있는 주차단위구역(carspaces)에 
+주소를 부여한다(NSW, 2021). 
+우리나라도 2021년 전면 개정된 ｢도로명주소법｣에
+서는 기존의 도로명주소뿐만 아니라 사물주소, 국가지
+점번호, 국가기초구역 등을 주소정보로 정의하고(｢도로
+명주소법｣ 제2조제11호), 사물주소는 도로명과 기초번
+호를 활용하여 도로명주소가 부여되는 건물등에 해당
+하지 아니하는 시설물의 위치를 특정하는 정보(｢도로
+명주소법｣ 제2조제10호)이다(ministry of the interior 
+and safety; MOIS, 2021a). 사물주소는 공법상의 권리
+관계 등을 정의할 수 있는 기존의 도로명주소와 달리 
+위치를 표시하는 기능이 강화된 주소정보이다. Kim 
+and Yang(2020)이 언급한 바와 같이 사물주소는 정보
+로서의 활용성이 높은 데이터이며, 시설물에 대한 공간
+정보나 공공데이터와 같은 행정정보(Kim, 2021)와도 
+연계하여 활용이 가능하다. 사물주소와 관련된 연구를 
+살펴보면 도로명주소법이 개정되기 전에 이루어진 연
+구가 대부분으로 ISO 19160-1 표준에 기반하여 사물
+주소 개념을 정의(Kim and Yang, 2020)하거나 데이터
+모델을 설계하는 연구(Kim, 2020)가 수행되었다. 또한 
+Cho et al.(2021)는 사물주소가 부여될 시설물에 대한 
+상대적인 중요도를 전문가와 일반인을 대상으로 설문
+을 통하여 분석함으로써 사물주소의 부여가 우선되어
+야 하는 시설물에 대하여 제시하였다. 시범사업으로 구
+축되어 제공된 사물주소 데이터와 공공데이터를 연계
+하여 활용하는 방법을 제시하는 연구(Kim, 2021)나 사
+물주소를 공공 및 민간에서 융·복합하여 활용하여 공적 
+가치 또는 수익을 창출할 수 있는 비즈니스 모델을 제
+시하는 연구(Lee et al., 2021)도 진행되었다. 또한 사
+물주소의 활용 가능성을 제시하거나 사물주소를 다른 
+시스템이나 산업분야와 결합한 서비스를 개발하는 연
+구도 진행되었다(Ko et al., 2021; Lee et al., 2022; 
+Mo et al., 2021; Park et al., 2021; Seo, 2022).
+그러나 도로명주소법에 제시된 사물주소의 부여 체
+계와 사물주소가 등록되어 제공하는 전자지도를 분석
+한 사례는 거의 없으므로, 사물주소의 활용 확대를 위
+해서는 법령에 명시된 사물주소의 부여 체계나 전자지
+도 구축 기준에 대한 분석이 필요가 있다.
+따라서 본 연구에서는 다양한 산업에서 상세한 위치
+의 표시를 요구하는 현 시점에서 행정안전부에서 위치
+를 표시하기 위하여 새롭게 도입한 사물주소 체계 및 
+데이터 구축 기준 등에 대하여 분석하고, 데이터의 연
+계 활용을 위한 정책을 제안함으로써 그 활용성을 제고
+하고자 한다.  
+2. 사물주소 부여 체계 분석
+사물주소(address of things, AOT)와 관련된 체계가 
+정리된 자료가 없어 ｢도로명주소법｣ 등 관련 법령을 바
+탕으로 데이터 관점에서 그 체계를 분석하고자 한다. 
+이를 위해서 ISO 19160-1에 제시되어 있는 주소 개념
+모델에서 주소와 연관이나 집합관계에 있는 클래스
+(class)를 중심으로 분석하였다(Table 1). 주소(address)
+는 하나 이상의 주소 구성요소(AddressComponent)와 
+집합관계이다. 주소 구성요소 값은 라벨(label)로 주소
+를 구성하는 객체를 문자로 표현한 것을 의미한다. 즉 
+도로를 도로명이라는 문자로 표현한 것이다. 또한 주소
+는 건물 등과 같이 주소가 할당되는 객체를 의미하는 
+
+15
+Type of objects
+Definition
+Elevator
+(육교승강기)
+Elevator installed for movement between road and overpass
+Riverside Parking lot
+(둔치주차장)
+Riverside parking lot installed on the bank of the river
+Emergency Assembly Area 
+(Earthquake) 
+(지진옥외대피장소)
+A safe place where residents, etc. in an evacuation zone can evacuate within 10 
+minutes in the event of an earthquake for the purpose of emergency (temporary) 
+evacuation
+Bus Stop
+(버스정류장)
+A place or area where vehicles for the taxi transportation business wait to get on and 
+off passengers or to pick up passengers.
+Taxi Stand
+(택시승강장)
+A place or area where a taxi transportation business vehicle waits to get on or off 
+passengers or to pick up passengers
+Rest Area
+(졸음쉼터)
+To prevent accidents caused by drowsy driving and to provide a rest area, a place to 
+provide a rest area to users by installing it in a section far apart from rest areas
+Emergency Assembly Area 
+(Tsunami)
+(지진해일대피장소)
+For the purpose of emergency (temporary) evacuation, in the event of a tsunami, 
+residents within the tsunami evacuation zone can evacuate within 10 minutes.장소
+Pocket Park
+(소공원)
+A park established to promote relaxation and emotional cultivation of city residents 
+using small-scale land
+Children's Park
+(어린이공원)
+Parks established to contribute to the improvement of children's health and emotional 
+life
+Emergency Water Supply 
+Facility
+(비상급수시설)
+acilities prepared to secure drinking water and water for living in preparation for 
+destruction and contamination of waterworks when a national emergency occurs due 
+to war or natural disasters such as earthquakes and floods
+Water Life-Saving Equipment
+(인명구조함)
+A facility or device for storing equipment necessary for saving lives
+Drone Delivery Point
+(드론 배달점)
+Address-based take-off and landing points where drones can take off after loading 
+goods and retrieve them after landing for delivery
+Parking
+(주차장)
+Parking lot installed on the road surface or in a certain area off the road surface
+Electric Vehicle Charging 
+Station
+(전기차충전소)
+A place to recharge electricity for vehicles that use electricity as fuel
+Table 2. Type of objects assinged AOT
+Class
+Descriptions
+AddressableObject
+An addressable object
+AddressComponent
+Component parts of an address
+AddressAlias
+One of a set of addresses that 
+unambiguously identifies the same 
+addressee
+Table 1. Main classes of ISO 19160-1
+주소 부여 대상(AddressableObject)과 상호 연관되어 
+있으며, 동일한 주소 부여 대상을 명확하게 식별하기 
+위하여 주소 별칭(AddressAlias)과 연관되어 있다(Kim 
+and Yang, 2020).
+2.1 사물주소 부여 기준
+2.1.1 AddressableObject
+사물주소가 부여되는 객체는 Table 2와 같이 ｢도로
+명주소법｣ 제24조 제1항에 명시된 육교 및 철도 등의 옥
+외시설에 설치된 육교승강기 지진해일옥외대피장소, 주
+차장 뿐만 아니라 행정규칙 ｢사물주소 부여 대상 시설물
+의 유형과 기준점 고시｣에 포함된 전기차충전소, 인명구
+조함, 졸음쉼터 등 총 14개의 시설물이다(MOIS, 2022a).
+2.1.2 AddressComponent
+사물주소는 ｢도로명주소법｣ 제2조제10호에 도로명
+과 기초번호를 활용한다고 되어 있다. 즉 사물주소도 
+도로명주소와 같이 도로에 도로구간을 설정하고, 해당 
+도로구간을 일정한 길이의 기초간격으로 구분하여 왼
+쪽에 홀수, 오른쪽에 짝수를 순차적으로 부여하는 도로
+명 방식으로 주소가 부여된다. 보다 구체적으로 ｢도로
+명주소법 시행령｣ 제41조제5항에 사물주소의 표기가 
+정의되어 있으며, 이를 기반으로 사물주소를 구성하는 
+요소가 행정구역 이름, 도로명, 건물번호, 사물번호, 시
+
+16
+김지영ㆍ이지원
+설물 유형의 명칭임을 알 수 있다(MOIS, 2021b). 행정
+구역 이름, 도로명, 건물번호는 도로명주소와 동일하므
+로, 사물번호, 시설물 유형의 명칭에 대해서 살펴보고
+자 한다. 
+｢도로명주소법 시행령｣ 제41조제1항을 보면 주소가 
+부여되는 시설물의 기준이 되는 점, 즉 사물번호기준점
+에 사물번호를 부여하게 된다.  ｢사물주소 부여 대상 
+시설물의 유형과 기준점 고시｣에 육교승강기, 둔치주차
+장, 지진대피장소, 지진해일대피장소, 소공원, 어린이공
+원, 주차장은 출입구나 개방되어 있어 다중의 접근이 
+편한 통행로의 중심점으로, 비상급수설, 인명구조함, 드
+론 배달점은 해당 시설물의 중심점, 버스정류장이나 택
+시승강장은 안내표지나 승차대의 중심점으로 사물번호
+기준점이 정의되어 있다. 졸음쉼터는 도로에서 졸음쉼
+터의 가감차선이 시작되는 지점, 전기차충전소는 차량
+이 진입하는 방향의 충전소 경계의 중심점으로 고시되
+어 있다.
+이때 사물번호기준점, 즉 시설물은 도로명주소가 부
+여된 건물 등의 외부 또는 내부에 있는 설치되어 있어 
+이를 구분하여 사물번호가 할당된다(｢도로명주소법 시
+행령｣ 제41조 제2항). Fig. 1과 같이 건물 등의 외부에 
+있는 경우는 사물번호기준점이 인접한 도로구간의 기
+초번호를 사물번호로 할당한다. 이는 도로명주소의 건
+물번호를 할당할 때 건물 등의 주된 출입구가 접하는 
+도로구간의 기초번호를 기준으로 건물번호가 할당되는 
+것과 동일하다. 그러나 시설물이 건물 등의 내부에 있
+는 경우는 사물번호기준점에 상세주소 부여 기준을 따
+르도록 되어 있다(｢도로명주소법 시행규칙｣ 제25조). 
+상세주소는 ｢도로명주소법｣ 제2조제2호에 건물 등 
+내부의 독립된 거주 · 활동 구역을 구분하기 위하여 부
+여된 동번호, 층수 또는 호수로 정의되어 있으며, 도로
+Figure 1. Rules for assigning thing number and AOT
+Figure 2. Rule for ho(unit) numbering when a room is
+divided and merged: (a) In case of division, 
+(b) In case of mergeing 
+명주소를 표기 시 도로명, 건물번호 뒤에 표기한다. 동
+번호는 숫자를 일련번호로, 건축물대장에 한글로 사용
+한 경우는 한글을 사용한다. 층수는 지표면을 기준으로 
+윗방향으로 1부터 일련번호를, 지하는 아랫방향으로 1
+부터 일련번호를 부여하고 지하는 ‘지하’를 붙인다. 호
+수는 숫자를 순차적으로 사용하고, 하나의 호를 둘 이
+상의 호로 나눌 경우는 한글 가, 나, 다, 라를 순차적으
+로 붙인다. 둘 이상의 호를 하나로 합치는 경우는 둘 이
+상의 호수 중 가장 낮은 호수를 붙이는 것을 기준으로 
+한다(Fig. 2). 이와 같은 동번호, 층수, 호수는 이동경로
+를 설정하고 이동경로를 따라 일정한 간격으로 번호를 
+나누어 부여하게 된다. 이를 실내이동경로 방식으로 주
+소를 부여한다고 하며, 출입구의 진행방향부터 또는 출
+입구부터 시계반대방향(오른쪽방향)으로 번호를 부여
+한다. 
+그러나 상세주소를 건물 등의 내부에 있는 시설물에 
+적용하는 것만으로는 시설물의 정확한 위치를 표시하
+는데 한계가 있을 수 있다.
+첫째, 상세주소 부여 기준을 준용 시 상세주소가 없
+는 건물 등의 내부에 있는 시설물은 주소를 부여하기 
+어렵다. 상세주소는 계층적으로 개별 건물부터 내부에 
+있는 방(room)까지 구분하기 위한 목적으로 아라비아 
+숫자 뒤에 ‘동’, ‘층’, ‘호’를 붙여 ‘1동 1층 1호’ 또는 
+‘1동 101호’나 ‘1-101’로 표기된다. 상세주소가 부여되
+지 않은 건물 등에서는 관리실, 경비실 등과 같이 방의 
+용도로 방을 구분하는 경우가 많다. 이와 같은 건물에
+서는 아라비아숫자인 호수가 없어 시설물이 있는 층수
+를 사용하여 사물번호를 할당할 수 있으나 이는 동일한 
+유형의 시설물이 여러 개인 경우 그 위치를 구분하는데 
+어려움이 있다(Fig. 3(a)).  
+둘째, 호의 분할 기준을 시설물에 적용 시혼란을 초
+래할 수 있다. Fig. 3(b)는 하나의 방 근처에 동일한 유
+형의 시설물이 여러 개가 있는 경우다. 동일한 시설물
+이 하나의 호에 있는 경우 이들 시설물을 구분하기 위
+
+17
+Figure 3. Limitations of current rule and the propsed rule for things inside buildings numbering: (a) In case of room
+names in Korean, (b) In case of being facilities of the same type in close proximity, (c) In case of being
+facilities inside and outside the room
+해서는 구분자가 추가로 필요하다. 하나의 기초간격에 
+2개의 건물이 있는 경우 가지번호,  예를 들어 ‘5-1’과 
+같이 구분하는 것과 같은 원리다. 앞서 살펴본 바와 같
+이 상세주소는 하나의 방이 분할되어 사용되는 경우 순
+서대로 가, 나, 다, 라를 추가하여 사용하도록 하고 있
+다. 즉 ‘102호’가 2개의 공간으로 분할된 경우, ‘102호’
+와 ‘102가호’로 사용한다(Fig. 2). 이를 적용하면 동일
+한 유형의 시설물이 2개인 경우 ‘201호’, ‘201가호’로 
+사물번호가 부여된다. 그러나 ‘201호’가 부여된 방은 
+분할되지 않았는데 시설물의 구분을 위해 ‘201가호’를 
+할당하게 되면 해당 방이 분할된 것으로 오인할 수 있
+다.
+셋째, 상세주소 부여 기준을 준용 시 방의 내부와 외
+부에 있는 시설물의 위치 식별이 모호하다. Fig. 3(c)와 
+같이 201호 외부(앞)에 있는 시설물과 201호 내부에 
+있는 시설물 모두 동일한 사물번호가 부여된다. 이는 
+ISO 19160-1에 제시된 상위 주소(parent address)와 하
+위 주소(child address) 개념에도 반하다. 상위 주소는 
+상위 주소를 할당할 수 있는 객체에 부여되는 주소, 하
+위 주소는 상위 주소에 관하여 정의된 주소이다(ISO 
+19160-1). 하위 주소 부여 대상(child addressable 
+object)은 주소가 부여된 다른 주소 부여 대상에 속하
+는 주소 부여 대상을 의미하며, 아파트 단지 내의 개별 
+건물(동)이 해당된다. 이때, 하위 주소는 상위 주소의 
+주소 구성요소(address component)를 완전히 상속하여
+야 한다. 즉 아파트 단지 내 개별 건물(동)의 주소가 아
+파트 단지의 도로명주소 뒤에 동을 이용한 상세주소로 
+표기하는 것이 해당된다(Fig. 4). 이와 같은 기준을 적
+용하면 ‘201호’ 내부의 시설물에 ‘201호’라는 주소 구
+성요소를 상속하여 할당하는 것이 타당하며, 201호 외
+부의 시설물이 방에 할당된 ‘201호’라는 주소 구성요소
+를 상속하는 것은 적절하지 않은 것이다.
+ 
+Figure 4. Concept of parent address and child address
+
+18
+김지영ㆍ이지원
+Current type of objects
+Propsed type of objects
+Elevator
+(육교승강기)
+Elevator
+(승강기)
+Riverside Parking lot 
+(둔치주차장)
+Parking
+(주차장)
+Parking (주차장)
+Pocket Park
+(소공원)
+Prak
+(공원)
+Children's Park
+(어린이공원)
+Drone Delivery Point
+(드론 배달점)
+Delivery Point (배달점)
+Table 3. Proposal of type of objects requiring name 
+integration
+살펴본 바와 같이 상세주소 부여 기준을 준용하여 건
+물 등의 내부에 있는 시설물에 사물번호의 할당 기준은 
+한계가 있다. 다만 건물 등의 내부에 상세주소를 부여
+하는 기준이 이미 있으므로, 이를 바탕으로 제시된 한
+계를 극복할 수 있는 방안을 마련하는 것이 타당할 것
+으로 판단된다. 이에 아라비아숫자인 호수와 ‘호’를 구
+분하는 것에 대해서 제안한다. 호수만을 사물번호로 규
+정하게 되면 ‘201호’ 내부와 외부에 있는 시설물이 구
+분된다(Fig. 3(c)). 즉 201호 내부(방 내부)에 있는 경우
+는 ‘201호’로 사물번호가 할당되고, 201호 외부(방 외
+부)에 있는 경우는 ‘201’로 사물번호가 할당된다. 또한 
+201호 외부에 있는 시설물의 경우 호수 분할 기준을 준
+용하여 ‘201가’라는 사물번호가 할당된다(Fig. 3(b)). 
+호수에 ‘호’가 부여되어 방을 구분하고 있어 이를 그대
+로 사물번호로 사용 시 방과 시설물이 혼돈될 수 있는 
+것을 방지할 수 있을 것으로 보여진다. 또한 상세주소
+가 부여되지 않고 방의 용도로 구분하고 있는 건물도 
+호수로 사물번호를 부여함으로써 사용하고 있는 호 구
+분과 별도의 기준으로 번호가 부여된 것과 같은 효과를 
+나타낼 수 있다(Fig. 3(a)).
+다음으로 시설물의 유형의 명칭은 현재 사물주소가 
+새로인 부여되는 시설물에 적합한 시설물 유형의 명칭
+을 추가하고 있으나 시설물이 확대되는 것을 대비하여 
+정비가 필요해 보인다. 둔치주차장, 주차장 또는 소공
+원, 어린이공원 등과 같이 사물주소가 부여되는 시설물
+이 추가될 때마다 시설물 유형의 명칭을 추가할 것이 
+아니라 오히려 이를 통합하는 명칭(주차장, 공원)으로 
+통칭하고 그 안에서 형상이나 사물번호기준점을 구분
+하는 것이 타당할 것이다(Table 3). 
+2.1.3 AddressAlias
+AddressAlias는 동일한 주소가 부여되는 객체인데 
+주소의 종류가 상이하거나 동일한 주소 부여 객체가 도
+로 모퉁이에 서로 다른 출입구가 있어 각 출입구별로 
+주소가 다른 경우 등이 해당된다. 전자는 하나의 건물
+에 도로명주소와 사서함주소와 같이 종류가 다른 주소
+가 있는 경우이고, 후자는 도로명이 다른 도로의 모퉁
+이에 건물의 출입구가 있어 출입구 별로 도로명과 건물
+번호가 상이한 주소들이 있는 경우이다. 
+｢도로명주소법 시행령｣ 제41조에 하나의 시설물에 
+사물번호를 부여하는 사물번호기준점이 둘 이상 설정
+되는 경우에는 각 사물번호기준점에 사물번호를 부여
+할 수 있도록 하고 있다. 지진옥외대피장소, 소공원, 어
+린이공원, 둔치주차장과 같이 개방된 공간에 해당하는 
+시설물은 사물번호기준점이 출입구가 여러 개인 경우 
+각 출입구마다 사물번호가 부여될 수 있다. 사물번호가 
+여러 개라는 것은 하나의 시설물이 둘 이상의 사물주소
+가 부여될 수 있다는 의미로, 그 시설물에 접근할 수 있
+는 지점(access point)인 모든 출입구에 사물주소가 부
+여된다. 
+AddressAlias가 적용되고 있는 호주 및 뉴질랜드에
+서는 별칭 주소(alias address)별로  주된 주소(principal 
+address)와 유형이 구분될 수 있도록 별도 테이블
+(ADDRESS_ALAIS)로 
+관리하고 
+있다(Geoscape 
+Australia, 2021). 사물주소는 ISO나 호주 및 뉴질랜드
+에서 정의하고 있는 AddressAlias와 상이한 부분도 있
+으나 사물주소가 부여되는 동일한 객체(시설물)에 둘 
+이상의 주소가 있는 경우로 주된 주소와 그렇지 않은 
+주소를 구분하여 제공되어야 하겠다.
+2.2 사물주소의 주소정보기본도 등록 기준
+주소정보기본도는 지적공부 등을 활용하여 주소정보
+를 종합적으로 수록한 도면으로(｢도로명주소법｣ 제25
+조), 전산처리장치에 따라 전산화된 도면으로 작성ㆍ관
+리된다(｢도로명주소법 시행령｣ 제44조). 즉 주소정보는 
+주소정보기본도라는 전자지도로 작성되어 관리된다. 
+주소정보기본도에는 주소정보 이외에도 행정구역의 경
+계, 도로구간, 도로의 실제 폭, 교량, 터널, 건물, 건물
+군, 기초간격, 국가기초구역 등이 등록되어 있다.
+따라서 사물주소가 부여되면 주소정보기본도에 관련 
+형상이나 속성을 등록하고 관리하여야 한다(｢도로명주
+소법｣ 제25조제1항). 주소정보기본도에는 시설물별로 
+형상(｢주소정보기본도 작성·관리 규정｣ 제21조), 기준
+점(제25조), 연결선(제13조제3항)을 작성하도록 되어 
+있다(MOIS, 2022b). 연결선은 사물번호기준점에서 기
+초간격까지 연결되도록 작성하고, 이들 간의 통행을 고
+려하여 최단거리로 작성한다((｢주소정보기본도 작성·
+
+19
+Data name
+Column name
+Note
+Engilsh
+Korean
+Master of object
+(사물마스터)
+OBJ_MNG_NO(PK)
+사물관리번호
+OBJ_NM
+사물명
+OBJ_ENG_NM
+사물영문명
+SIG_CD
+시군구코드
+CTP_KOR_NM
+시도명
+SIG_KOR_NM
+시군구명
+AOT
+(사물주소)
+OBJ_MNG_NO(PK)
+사물관리번호
+ADRES_NO(PK)
+사물주소일련번호
+PNT_SP_NO(PK)
+출입구공간일련번호
+SIG_CD
+시군구코드6
+CTP_KOR_NM
+시도명
+SIG_KOR_NM
+시군구명
+EMD_KOR_NM
+읍면동명
+RN
+도로명
+RN_CD
+도로명코드
+UND_YN
+지하여부
+ADRES_MNNM
+주소본번
+ADRES_SLNO
+주소부번
+ADM_CD
+행정구역코드
+REPRSNT_YN
+대표주소여부
+XCNTX
+X좌표
+applicants only
+YDNTX
+Y좌표
+Table 4. Table specification for anyone and applicants only based on major attributes
+관리 규정｣ 제13조제2항). 시설물별 형상의 기준은 ｢사
+물주소 부여 대상 시설물의 유형과 기준점 고시｣에 고
+시된 바와 버스정류장, 택시승강장, 비상급수시설, 인명
+구조함, 드론배달점은 점으로, 그 외 시설물은 시설물
+의 경계나 범위를 면으로 등록한다. 사물주소의 주소정
+보기본도 등록에 대해서는 3장에서 보다 구체적으로 
+분석한다.
+3. 사물주소 데이터 분석
+3.1 사물주소 데이터 명세
+｢도로명주소법 시행규칙｣제53조제3항에 따라 주소
+정보는 공개하는 주소(누구나 다운로드 가능)와 제공하
+는 주소(신청자만 다운로드 가능)로 나뉘며 주소정보누
+리집 주소기반산업지원서비스에서 내려받을 수 있다
+(MOIS, 2022c). 공개하는 주소는 형상 또는 좌표를 제
+외한 데이터로, 제공하는 주소는 형상 또는 좌표를 포
+함한 데이터로 제공된다. 
+공개하는 주소에서는 모든 시설물에 대해 공통적으
+로 사물마스터와 사물주소 테이블을 제공한다(Table 
+4). 사물마스터 테이블에서는 사물관리번호가 주된 키
+(Primary Key, PK)로 사물명 등이 속성으로 등록되어 
+있다. 사물주소 테이블은 사물관리번호와 사물주소일
+련번호가 PK로 도로명, 지하여부, 사물번호, 대표주소
+Layer
+Column name
+Engilsh
+Korean
+Elevator
+(육교 승강기)
+THINGS_SN(PK)
+사물관리번호
+THINGS_SE(PK)
+사물구분코드
+ELVTR_UN(PK)
+승강기고유번호
+ELVTR_NUMB
+승강기호기
+ELVTR_ITLP
+승강기설치장소
+GRO_FLO_CO
+지상층수
+UND_FLO_CO
+지하층수
+SIG_CD
+시군구코드
+OVRPS_NM
+육교명
+MANGE_NM
+승강기 관리주체
+REFER_ADR
+승강기 참고주소
+OVRPS_SN
+육교일련번호
+ElevatorEntra
+nce
+(육교 출입구) 
+THINGS_SN(PK)
+사물관리번호
+AOT_SN(PK)
+사물주소일련번호
+THINGS_SE
+사물구분코드
+FLO_CO
+층번호
+FLO_ALIAS
+층별칭
+ADM_CD
+행정구역코드
+RN_ADDR
+사물주소
+RN
+도로명
+RN_CD
+도로명코드
+AOT_MNNM
+사물주소본번
+AOT_SLNO
+사물주소부번
+Pedestrian 
+overpass
+(육교)
+OVRPS_SN(PK)
+육교일련번호
+OVRPS_NM
+육교명
+SIG_CD
+시군구코드
+Table 5. Table specification for elevator based on 
+major attributes
+
+20
+김지영ㆍ이지원
+여부 등의 정보가 제공된다. 사물마스터와 사물주소 테
+이블은 사물관리번호로 연계되며, 하나의 시설물을 중
+심으로 사물주소가 연계되어 관리되고 있다. 
+다만 육교승강기의 경우는 테이블 구성이 상이하며, 
+육교승강기, 육교출입구, 육교 테이블로 구성되어 있다
+(Table 5). 육교승강기 테이블은 사물관리번호, 사물구
+분코드, 승강기고유번호가 PK로, 승강기 설치장소나 
+호기, 승강기관리원에서 사용하는 참고주소, 육교일련
+번호 등이 제공된다. 육교출입구 테이블에서 사물주소
+와 관련된 정보가 제공되며, 사물관리번호, 사물주소일
+련번호, 사물구분코드, 층번호가 PK다. 육교 테이블은 
+육교일련번호가 PK로 육교명 등의 속성이 있으며, 육
+교승강기 테이블과 연계된다. 육교승강기는 육교일련
+번호로 육교와 육교출입구 테이블이 연계되며, 다른 시
+설물 데이터와 동일하게 육교출입구 테이블(사물주소)
+과 육교승강기 테이블(사물마스터)이 사물관리번호와 
+사물구분코드 PK로 연계된다. 
+제공하는 주소는 사물주소 시설 기준점과 사물주소 
+시설 도형으로 크게 구분되어 제공되며, 사물주소 시설 
+기준점은 Table 4와 같이 사물주소 테이블에 위치(X좌
+표, Y좌표)가 추가되어 있다. 사물주소 시설 도형은 사
+물구역(면), 사물진출입로(선), 사물출입구(점), 사물위
+치점으로 구성된다. 육교승강기만 육교승강기, 육교출
+입구, 육교로 제공된다. 이들 도형정보에는 사물관리번
+호(OBJ_MNG_NO)를 PK로 사물주소 시설 기준점에
+서 제공하는 좌표값이 있는 테이블과 연계되어 있다. 
+다시 말하면 도형정보에는 사물관리번호를 중심으로 
+시설물의 종류나 출입구가 주된 출입구 인지 등의 간단
+한 속성정보만 포함되어 있다. 보다 자세한 것은 실제 
+데이터를 바탕으로 살펴보고자 한다.
+3.2 기구축된 사물주소 데이터 분석
+현재 주소정보누리집(MOIS, 2022c)에서 유통되고 
+있는 사물주소 데이터를 분석한 결과, 2023년 5월 기준
+으로 전국적으로 Table 6과 같이 200,173개 시설물에 
+223,238개의 사물주소가 부여되어 있다. 하나의 시설
+물에 출입구가 여러 개인 경우 각 출입구마다 사물주소
+가 부여되어 있어 사물주소의 개수와 주소가 부여된 객
+체(시설물)의 개수가 상이하다. 특히 둔치주차장, 지진
+옥외대피장소, 졸음쉼터, 지진해일긴급대피장소, 소공
+원, 어린이공원, 주차장과 같이 영역이 있는 시설물에 
+여러 개의 출입구가 존재하여 여러 개의 사물주소가 부
+여된 것으로 보여진다.
+사물주소는 앞서 언급한 바와 같이 주소정보누리집
+에서 내려받을 수 있으며, 시도 단위로 데이터를 신청
+Type of objects
+Number of 
+objects 
+Number of 
+AOT 
+Elevator
+1,074 
+2,223 
+Riverside Parking lot
+335 
+541 
+Emergency Assembly 
+Area (Earthquake)
+10,519 
+18,183 
+Bus Stop
+144,778 
+144,778 
+Taxi Stand
+3,425 
+3,425 
+Rest Area
+306 
+596 
+Emergency Assembly 
+Area (Tsunami)
+633 
+833 
+Pocket Park 
+1,533 
+2,829 
+Children's Park
+7,590 
+18,274 
+Emergency Water Supply 
+Facility
+8,505 
+8,505 
+Water Life-Saving 
+Equipment
+4,769 
+4,769 
+Drone Delivery Point
+277 
+277 
+Parking
+11,264 
+12,837 
+Electric Vehicle Charging 
+Station
+5,165 
+5,168 
+Total
+200,173
+223,238
+Table 6. AOT assignment status (2023.05.31.)
+할 수 있다. 본 논문에서는 서울특별시 데이터셋(23년 
+5월)을 분석하였다. 제공하는 주소정보의 사물주소 시
+설 기준점(AOT facility datum point)에는 시설물 유형
+별로 각각 사물마스터(Master of object)와 사물주소
+(AOT) 테이블이 포함되어 있었다. 사물주소 시설 도형
+(AOT facility shape)은 면으로 형상이 고시된 시설물
+(주차장, 졸음쉼터, 육교승강기, 지진해일대피장소 등)
+은 area, line, point 레이어로 구분되어 있었고, 점 형상
+으로 고시된 시설물(비상급수시설, 인명구조함 등)은 
+line 레이어가 포함되어 있었다. 다만 서울특별시의 경
+우는 버스승강장, 택시승강장의 line레이어는 없었다. 
+여기서 area는 사물구역(면), line은 사물진출입로(선), 
+point는 사물출입구(점)에 대응되었다. 육교승강기는 
+사물주소 시설 기준점에는 데이터가 없고, 사물주소 시
+설 도형에서만 육교승강기(area), 육교출입구(point), 육
+교 데이터(line)로 구분되어 있었다. 서울특별시의 경우
+는 드론배달점이나 지진해일대피장소 데이터를 열어보
+면 사물주소가 부여된 시설물이 없어서 그런지 No 
+data로 되어 있었다.
+주소정보누리집의 설명자료의 데이터 이름과 내려받
+은 실제 데이터나 레이어 이름이 상이하여 활용하는데 
+어려움이 있었다. 예를 들어 버스승강장에 해당하는 사
+물주소 데이터가 ‘Total.JUSUAY.20220601.TI_SPOT_ 
+BUSST_ADRES.11000’으로 명명되어 해당 이름에 포
+
+21
+Figure 5. Example of AOT data for Parking (Dongho Parking)
+함된 단어(BUSST)나 데이터에 포함된 사물종류코드
+(OBJ03) 등으로 유추해야 한다. 
+3.1절에서 살펴본 바와 같이 좌표값이 추가된 제공하
+는 주소정보를 중심으로 형상이 면 또는 점으로 구축되
+는 시설물의 기구축된 데이터를 살펴보았다. Fig. 5는 
+형상이 면으로 고시된 주차장의 경우이다. 3.1절에서 
+언급한 바와 같이 사물관리번호(OBJ_MNG_NO, 
+OBJ12117100000009)로 면(Parking 
+shape)과 점
+(Entrance), 도로구간과 연결된 선(Connection line)이 
+연계되어 있다. 도형에는 출입구가 주출입구구분
+(MAIN_ENTSE), 
+출입구유형(ENT_TY), 
+제한높이
+(LMTT_HG), 진입도로구분(ENTRYRD_SE) 등 도형
+과 관련된 일반적인 속성만 포함되어 있고, 사물주소 
+시설 기준점인 사물마스터나 사물주소 테이블에 시설
+물 이름(송파나루공원 동호주차장)이나 사물주소(서울
+특별시 송파구 잠실로 200 주차장)의 구성요소 필드가 
+포함되어 있다. 그러나 사물주소의 경우 법령에 제시된 
+표기를 위해서는 시설물 유형의 명칭에 해당하는 필드
+가 포함되어 있거나 사물주소 필드가 추가되어야 할 필
+요가 있다.
+Fig.6은 형상이 점으로 고시된 인명구조함에 대한 정
+보
+로
+, line만
+ 제
+공되
+어
+ QGIS에
+서
+ 사
+물주
+소
+ 시
+설
+ 기
+준점
+의 
+사물주소 데이터(AOT)에서 X좌표와 Y좌표를 이용하여 
+인명구조함 형상(점)을 생성하였다. 연결선(Connection 
+line)과 사물관리번호(OBJ09000000000181)로 데이터
+Figure 6. Example of AOT data for Water Life-Saving 
+Equipment
+
+22
+김지영ㆍ이지원
+Figure 7. Example of AOT data for Elevator (Seongsu cloud bridge)
+가 서로 연계된다. 인명구조함과 같은 경우는 통용되는 
+시설물 이름이 있는 것도 아니고, 주소가 없다면 인명구
+조함의 위치를 좌표값으로만 관리하여하 하기에 주소로 
+그 위치를 표시하는 것은 중요할 것으로 판단된다.
+육교승강기는 육교승강기, 육교출입구, 육교로 구분
+되어 제공되고 있었으며, Fig. 7은 서울특별시 ‘성수구
+름다리’에 대한 도형정보이다. 성수구름다리의 양측에 
+육교승강기가 각 1개씩 설치가 되어 있으며, 2층으로 
+되어 있어 육교출입구가 각 2개씩 있다. 양측에 있는 
+육교승강기에 각각 사물주소(서울특별시 성동구 강변
+북로 259 육교승강기, 서울특별시 성동구 강변북로 
+260 육교승강기)가 부여되어 있으며, 육교승강기는 1
+층과 2층에 개별 출입구가 있으나 동일한 위치에 층이 
+상이한 여러 개의 출입구가 있어 하나의 사물주소만 부
+여되어 있다. 육교와 육교승강기는 육교일련번호
+(OVRPS_SN, 107)로, 육교승강기와 육교출입구는 사
+물관리번호(THINGS_SN, 615)로 연계된다. 그러나 육
+교승강기의 경우는 승강기를 관리하는 승강기관리원이 
+승강기를 식별하는 승강기호수(ELVIR_NUMG)나 승
+강기참조주소(REFER_ADR) 등을 포함하고 있어 이들 
+데이터와의 연계 시 활용될 수 있을 것이다. 
+현재 사물주소는 건물 등의 외부에 있는 시설물에 대
+해서만 구축되어 제공되고 있어 건물 등의 내부에 있는 
+시설물에 상세주소 부여 기준이 어떻게 적용되고 있는
+지에 대해서는 확인할 수가 없었다.  
+사물주소 데이터셋을 분석한 결과, 사용의 편의성 및 
+다른 데이터와의 연계 등을 고려 시 다음과 같은 한계
+점을 도출하였다.
+첫째, 현재 주소에 좌표값이 있는지 여부와 형상을 
+제공하는지에 따라서 공개하는 정보와 제공하는 정보
+로 구분하고 있다. 그러나 이와 관련된 설명자료에 정
+의된 데이터 이름과 실제 데이터 이름이 상이하여 활용
+하는데 어려움이 있다. 따라서 설명자료의 현행화가 필
+요하다. 
+둘째, 사물주소의 표기방법이 법령에만 제시되어 있
+어 설명자료에 표기방법이 포함될 수 있도록 하거나 사
+물주소 필드가 포함되어 제공할 수 있도록 해야겠다. 
+셋째, 시설물별로 어느 범위까지 등록하느냐에 따라
+서 그 필드가 상이할 수 있다. 육교와 같은 경우는 주소
+가 부여되지는 않지만 하나의 육교에 여러 개의 육교승
+강기가 있을 수 있어 이를 하나의 데이터셋으로 구축하
+여 제공하고 있다. 육교는 주소가 부여되는 객체가 아
+니라 참고로 사용되는 정보이므로, 이런 객체는 별도로 
+구축하지 말고 타 시스템에서 관리하는 PK를 고유키로 
+주소가 부여된 객체가 연계될 수 있도록 하는 방안이 
+타당해보인다. 또한 주차장 내 전기차충전소가 있는 경
+우도 다수 있어 유형이 상이한 시설물 간의 관계도 고
+려될 필요가 있다. 연결선의 경우도 어느 도로구간이나 
+
+23
+기초번호와 연결되는지에 대한 정보도 제공되어야 주
+소정보기본도의 다른 등록사항과 연계하여 활용이 가
+능할 것이다.
+마지막으로 시설물을 중심으로, 즉 시설물관리번호
+를 PK로 테이블이 연계되어 있으나 이는 ISO 표준에
+서는 주소를 중심으로 클래스가 연결되는 구조와 상이
+하여 이에 대한 수정이 필요할 것이다. 사물주소에 대
+한 관리가 우선이므로, 이를 중심으로 주소에서 관리가 
+필요한 형상, 기준점 및 그 외 주소정보기본도 등록사
+항과의 연계가 되어야 하겠다.
+4. 결론 및 정책제언
+행정안전부에서는 2021년부터 국민이 많이 이용하는 
+시설물에 대하여 그 위치를 신속하게 확인하여 안전에 
+대비할 수 있도록 2022년 12월 현재 14종의 시설물에 
+대하여 사물주소를 부여하고 이를 문자 중심의 정보(공
+개하는 주소)와 형상정보(제공하는 주소)를 제공하고 
+있다. 사물주소가 부여되는 기준에서는 도로명주소가 
+부여되는 건물 등의 내부에 있는 시설물은 상세주소를 
+부여하는 기준을 준용하여 사물번호가 부여되다보니 
+방 내부에 있는 시설물과 외부에 있는 시설물이 구분되
+지 않거나 실제 방은 하나인데 동일한 유형의 시설물이 
+2개여서 가호, 나호로 구분되는 등의 경우가 발생하여 
+시설물의 위치를 인지하는데 혼란이 있다는 한계가 있
+었다. 다음으로 사물주소 데이터를 분석한 결과, 실외
+에 있는 시설물에 대해서는 법령에 제시된 기준에 따라 
+사물주소가 부여되어 있는 것으로 나타났다. 다만 설명
+자료에 정의되어 있는 데이터 이름과 실제로 제공되는 
+데이터 이름이 상이하여 사용자가 활용하는데 어려움
+이 있었다.
+따라서 도출된 한계를 개선하고 다른 데이터와의 연
+계 활용을 위하여 다음과 같이 정책을 제안한다. 
+첫째, 사물주소를 부여 시 건물 등의 내부에 있는 시
+설물의 사물번호는 상세주소 부여 기준을 준용하되, 호
+수와 ‘호’를 구분하여 호수만을 사물번호로 할당할 수 
+있도록 보완이 필요할 것이다. 이를 위해서는 호수 뒤
+에 ‘호’는 건물 등의 방을 구분하는 상세주소의 호에서
+만 사용됨을 명확히 해야한다.
+둘째, ISO 표준에 제시된 바와 같이 시설물과 같은 
+객체가 아니라 사물주소를 중심하여 데이터가 관리될 
+수 있도록 데이터가 설계되어야 하겠다. 이를 바탕으로 
+상이한 시설물을 연결하는 식별 키로서 주소를 활용할 
+수 있을 것이다.
+셋째, 시설물에 타 시스템이나 구축 시 활용한 원천 
+데이터에서 사용되는 PK를 입력하여 제공함으로써 타 
+데이터와의 연계한 활용이 가능하도록 해야할 것이다.
+본 논문에서는 기구축된 사물주소에 건물 등의 내부
+에 있는 시설물이 없어 법령을 바탕으로 제시한 기준이 
+타당한지 분석하지 못하였다는 한계가 있는 있으나 도
+로명주소 관련 법령을 바탕으로 사물주소가 부여되는 
+기준을 정의하고, 기구축된 데이터를 분석하여 한계점
+을 도출하고 개선을 위한 정책을 제언하였다는데 의의
+가 있다.  
+감사의 글
+이 논문은 정부(과학기술정보통신부)의 재원으로 한
+국연구재단의 지원을 받아 수행된 연구임(No. 2023R1 
+A2C2008146). 
+References
+1. AGI, 2023, https://www.agi.org.uk/bs-7666-guidelines/
+2. Cho, S., Bae, S. H., Kim, M, K. and Lee, K.-K., 
+2021, Public and experts perception analysis about 
+relative importance of address of things using AHP. 
+Journal of Korean Society of Industrial and Systems 
+Engineering, Vol. 44, No. 1, pp. 71-78.
+3. French Republic, 2022, Data.gouv.fr, https://www. 
+data.gouv.fr/fr/pages/spd/reference/ 
+4. Geoscape, 2022, Geoscape, https://geoscape.com. 
+au/ 
+5. INSPIRE, 2014, D2.8.I.5 INSPIRE data specification 
+on addresses – technical guidelines, https://inspire. 
+ec.europa.eu/documents/Data_Specifications/INSPIR
+E_DataSpecification_AD_v3.1.pdf
+6. ISO, 2015, ISO 19160-1:2015 Addressing — Part 1: 
+Conceptual model, https://www.iso.org/standard/61710. 
+html
+7. Kim, J., 2020, Address of things database design 
+based on the address concept model suggested in 
+the standard, Journal of Korean Society for Geospatial 
+Information Scienece, Vol. 28, No. 3, pp. 85-92.
+8. Kim, J. and Yang, S. C., 2020, Definition of address 
+of things based on standards in preparation for 
+revision of Road Name Address Act, Journal of 
+Korean Society for Geospatial Information Scienece, 
+Vol. 28, No. 2, pp. 49-57. 
+9. Kim, J., 2021, Exploring method to integrate and 
+utilize open data and address of things, Journal of 
+
+24
+김지영ㆍ이지원
+Korean Society for Geospatial Information Scienece, 
+Vol. 29, No. 1, pp. 43-54. 
+10. Ko, I. W., Jeong, U. H., Kim, Y., Kim, M. B., Kim, 
+K. D., Kang, A. T., Jeong, Y. M., Cho, D. U. and 
+Kim, G.B., 2021, A comparative analysis of street 
+name address, object address, and grid-based 
+address. Proc. of Symposium of the Korean Institute 
+of Communi- cations and Information Sciences, 
+Jeju, Korea, pp. 1511-1512.
+11. Lee, K. K., Bae, S. H., Kim, M. K. and Cho, S. J., 
+2021, The study on the development and evaluation 
+of business model based on the address of things. 
+The e-Business Studies, Vol. 22, No. 2, pp. 23-38.  
+12. Mo, S. H., Lee, J. W., Lim, C. H. and Kim, H. J., 
+2021, An analysis of the media’s report on the 
+adoption of the address of things using Topic 
+Modeling and Network Analysis, Smart Media 
+Journal, Vol. 10, No. 2, pp. 38-47.
+13. MOIS, 2021a, Road Name Address Act, Ministry of 
+Government Legislation, https://www.law.go.kr/법령/
+도로명주소법 
+14. MOIS, 2021b, Enforcement Decree Of The Road 
+Name Address Act, Ministry of Government Legislation, 
+https://www.law.go.kr/법령/도로명주소법시행령
+15. MOIS, 2021c, Enforcement Rule Of The Road Name 
+Address Act, Ministry of Government Legislation, 
+https://www.law.go.kr/법령/도로명주소법시행규칙 
+16. MOIS, 2022a, Announcement of types and reference 
+points of facilities subject to object address assignment, 
+Ministry of Government Legislation, https://www.law. 
+go.kr/행정규칙/사물주소부여대상시설물의유형과기준
+점고시
+17. MOIS, 2022b, Address information base map 
+creation and management regulations, Ministry of 
+Government Legislation, https://www.law.go.kr/행정
+규칙/주소정보기본도작성관리규정 
+18. MOIS, 2022c, Address Information, MOIS, http:// 
+www.juso.go.kr 
+19. MOLIT, 2015, Change of selection of fundamental 
+spatial data, Ministry of Land, Infrastructure and 
+Transport, http://www.molit.go.kr 
+20. MOLIT, 2017, Fundamental Spatial Data Construction 
+Regulations, Ministry of Government Legislation, 
+https://www.law.go.kr/행정규칙/기본공간정보구축규정
+/(2017-1041,20171230) 
+21. MOLIT, 2018, Addressing-Part 1: Conceptual model 
+KS X ISO 19160-1:2015, Korean Agency for Technology 
+and Standards, https://e-ks.kr/streamdocs/view/sd; 
+streamdocsId=72059241964670198 
+22. MOLIT, 2022, Framework Act On National Spatial Data 
+Infrastructure, Ministry of Government Legislation, 
+https://www.law.go.kr/법령/국가공간정보기본법
+23. NSW, 2023, NSW address policy and user manual, 
+https://www.gnb.nsw.gov.au/__data/assets/pdf_file/0
+005/231908/NSW_Address_Policy_and_User_Manua
+l_2021_.pdf
+24. Park, G. Y., Yeon, J. H., Chea, J. M., Kim, Y., Kim, 
+M. B., Kim, K. D., Kang, A. T. and Kim,G. B., 2021, 
+Development of the logistics location tracking 
+program based on the address of things.  Proc. of 
+Symposium of the Korean Institute of Communi- 
+cations and Information Sciences, Jeju, Korea, pp. 
+209-210.
+25. Seo, D., 2022, Roles and availabilities of address of 
+things for the road name address system. Proc. of 
+Korean Society for Geospatial Information Science, 
+Pusan, Korea, pp. 265-266.
+26. Yi, Y. Jung, M.,  Kim, D., Song, K., Nam, K. and 
+Choi, M., 2022, Implementation of smart bus stop 
+service platform based on GS1 standard digital 
+address, Korea Computer Congress(KCC2022), Jeju, 
+Korea, pp. 296-298. 
