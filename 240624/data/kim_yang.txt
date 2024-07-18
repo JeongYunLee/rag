@@ -1,0 +1,619 @@
+Definition of Address of Things Based on Standards in Preparation for
+Revision of Road Name Address Act
+*
+김지영*ㆍ양성철**
+Kim, Ji YoungㆍYang, Sung Chul
+要  旨
+행정안전부에서는 도로명주소법 개정을 통해 도로명주소를 거소나 법인의 소재지에서 위치를 표시하는 정보로서 
+그 의미를 확대하고자 한다. 이미 표준에서는 주소를 구조화된 정보로 정의하고 있으며, 격자 기반의 주소체계로 
+전 세계의 위치를 표시하는 산업이 확대되고 있다. 이에 본 연구에서는 표준에서 제시하는 주소 모델을 이용하여 
+도로명주소법 개정안을 바탕으로 사물주소를 정의하고 부여방안을 제시하였다. 
+핵심용어 : 주소정보, 도로명주소, 사물주소, 표준, 주소 모델
+Abstract
+Ministry of the Interior and Security intends to expand the meaning of the road name address as information 
+indicating the location through the revision of the Road Name Address Act from the place of a residence or a 
+corporation. Already in international standards, addresses are defined as structured information representing locations,
+and a grid-based addressing system is expanding the industry representing locations worldwide. Therefore, we 
+defined the address of things(AoT) based on the revised Act by the address model suggested in the standard and 
+proposed strategies for assigning AoT.
+Keywords : Address Information, Road Name Address, Address of Things, Standard, Address Model
+49
+대한공간정보학회지 
+(Journal of Korean Society for Geospatial Information Science)
+Vol.28 No.2 June 2020 pp.49-57
+연구논문
+ISSN: 1598-2955 (Print)
+ISSN: 2287-6693(Online)
+http://dx.doi.org/10.7319/kogsis.2020.28.2.049
+www.dbpia.co.kr
+
+50
+김지영ㆍ양성철
+별자로서 역할을 확대하고, 이를 바탕으로 자율주행자
+동차나 드론 배송 등의 산업을 지원하는 내용을 담은 
+[제3차 주소정책 기본계획(‘18-’22)]을 발표하였으며, 
+도로명주소법 전부개정법률(안)(이하 도로명주소법 개
+정안)을 입법 예고하였다. 이를 기점으로 주소에 대한 
+국내 표준(KS X ISO 19160-1 주소-제1부:개념모델)이 
+제정되었으며, 현행 도로명주소를 고도화하고, 산업 지
+원을 위한 시범사업이 시행 중이다. 도로를 따라 건물 
+단위로 건물번호를 부여하는 기존의 도로명주소 외에 
+건물이 아닌 시설물에 사물주소를 부여하거나 복잡한 
+건물 내부에 주소를 부여하고 있다. 구체적으로 살펴보
+면 2018년에는 부평역사 및 인근 지하상가를 대상으로 
+복잡한 실내에 입체주소를 부여하고자 하는 시범사업
+이 진행되었으며, 여러 용도로 활용되는 입체복합공간
+에 대하여 정의하고, 이들 공간 간의 연결통로나 수직
+이동통로 등을 고려한 경로 부여방안을 제시하고 입체
+주소DB도 구축하였다. 또한 의정부지하상가를 대상으
+로는 지하상가라는 실내에 주소를 부여하는 체계를 개
+발하였다. 그러나 이들 데이터에서는 입체복합공간이
+나 경로를 설정하는 방법 등에 대한 구체적인 방법이 
+제시되어 있지 않다는 한계가 있다. 특히 Jincheon- 
+gun(2019)에서는 주소정보 및 관련 용어 정의, 사물주
+소에 대한 정의 및 부여 체계에 대하여 제시하였다. 그
+러나 해당 연구에서 제시된 사물주소 부여 체계는 시설
+물의 위치에 따라 여러 개의 부여방안이 제시되어 있으
+나 현재 구축되어 제공되고 있는 사물주소 DB에 맞도
+록 현행화될 필요가 있다. 또한 사물주소의 부여 위치
+나 표기방법 등이 구체적으로 제시되어 있지 않아 그 
+활용에는 한계가 있다. 따라서 본 연구에서는 도로명주
+소법 개정안에서 제시된 사물주소 및 기구축된 사물주
+소DB를 바탕으로 구체적인 부여방안 및 표기방법 등
+을 제시하는 것을 목표로 한다. 나아가 사물주소의 성
+공적 안착을 위한 정책을 제안하고자 한다. 
+2. 이론적 고찰
+2.1 주소 표준
+국제표준기구인 ISO TC211에서는 주소개념 모델을 
+국제 표준(ISO 19160-1 Addressing - Part 1: Conceptual 
+model)으로 제정하였으며, 2018년에는 이를 한국어로 
+번역하여 국내 표준을 제정하였다. 
+해당 표준에서는 주소(address)를 식별 및 위치 파악
+을 목적으로 단일 객체를 명확하게 확인할 수 있게 하
+는 구조화된 정보로 정의하고 있다. 여기서 객체는 전
+자 및 가상이 아니라 실 세계에서 식별이 가능한 것이
+고, 식별은 사람이 객체를 식별하는데 도움이 된다는 
+의미이지, 데이터베이스 또는 데이터 집합의 고유한 식
+별자를 의미하는 것은 아니다. 다시 말하면 표준에서 
+정의하는 주소는 사람이 실 세계에 존재하는 객체를 명
+확하게 식별할 수 있게 하는 구조화된 정보로 해석할 
+수 있다. 
+Fig. 1과 같이 개념모델이 제시되어 있으며, 주소 모
+델의 핵심은 주소정보
+1)(address)는 하나 이상의 주소 구
+성요소(AddressComponent)로 구성된다는 것이다. 주소 
+구성요소 값은 라벨(label)이고, 다른 객체(Reference 
+Object, 기반 대상2))를 참조한다. 다시 말하면 주소 구
+성요소는 주소를 구성하는 요소로 기반 대상을 문자로 
+표현한 것을 의미한다.
+Table 1에서와 같이 행정구역경계라는 기반 대상은 
+행정구역명, 도로구간은 도로명, 건물(건물군)은 건물
+번호라는 문자로 표현이 되며, 행정구역명, 도로명, 건
+물번호가 주소 구성요소가 된다.
+이들 구성요소를 어떤 조합으로 결합해야 하는지가 
+주소 참조 체계(address reference system)인데, 주소 
+참조 체계나 주소 모델의 각 클래스를 설명하는 사양 
+또는 문서에 대한 메타데이터가 AddressSpecification
+Class
+Example
+Address
+Road name address
+AddressableObject
+Building(A complex of many 
+buildings)
+AddressComponent
+Administrative district name, 
+Road name, Building number 
+ReferenceObject
+Administrative district, Road 
+section, Building(A complex of 
+many buildings)
+AddressedPeriod
+Assignment date, Notification date, 
+Modification date and disuse data
+AddressSpecification Road Name Address Act
+AddressAlias
+Building name
+Parent - Child
+Administrative district name, 
+Road name, Building number - 
+Detailed address
+Table 1. Classes of street name address 
+1) 국내 표준에서는 address를 주소라 용어 정의를 하고 있으
+나, 개정법에서는 주소정보라는 용어를 사용하고 있어 본 
+연구에서도 사물주소까지 포함될 주소를 주소정보라고 통
+일하여 사용한다.
+2) 국내 표준에서는 ReferenceObject, AddressedPeriod, Address 
+Specification에 대하여 차례대로 참조할 수 있는 객체, 주소
+가 주소가 지정된 객체와 연계된 기간, 주소와 이에 대한 
+구성요소의 사양이라 풀이하고 있다. 이에 본 연구에서는 
+기반 대상, 연계 기간, 주소 사양이란 용어로 사용한다.
+www.dbpia.co.kr
+
+51
+(주소 사양
+2)) 클래스에 정의되어 있다. 우리나라는 도
+로명주소 관련 법령이 이에 해당된다. 주소 모델의 나
+머지 요소는 건물 등 주소가 할당되는 객체인 
+AddressableObject(주소 부여 대상)와 주소가 특정 주
+소 부여 대상과 연관되어 있는 동안을 의미하는 
+AddressedPeriod(연계 기간
+2))이 있다. 
+또한 동일한 주소 부여 대상을 명확하게 확인하기 위
+하여 주소들은 AddressAlias(주소 별칭)으로 참조된다. 
+표준에서는 두 개의 도로 모퉁이에 접하는 하나의 건물
+이 각 도로마다 출입구가 있어 출입구마다 주소가 부여
+된 건물을 예로 들고 있다. 
+마지막으로 주소와 주소 부여 대상은 다른 주소와 주
+소 부여 대상과 상위(parent)-하위(child) 관계를 가질 
+수 있다. 상위 주소(parent address)는 하나 이상의 다
+른 주소 부여 대상을 완전히 포함하는 상위 주소 부여 
+대상(parent addressable object)의 주소이고, 하위 주소
+(child address)는 주소가 부여된 다른 주소 부여 대상
+에 속하는 하위 주소 부여 대상(child addressable 
+object)의 주소이다. 하위 주소는 상위 주소의 구성요소
+를 완전히 포함한다. 예를 들어 우리나라의 아파트나 
+학교와 같은 건물군이 상위 주소 부여 대상이고, 건물
+군 내 각 건물(동)이 하위 주소 부여 대상이다. 상위 주
+소 부여 대상인 건물군에 부여되는 행정구역, 도로명, 
+건물번호가 상위 주소, 하위 주소 부여 대상인 건물(동)
+에 부여되는 동(棟)번호, 층(層)수, 호(號)수인 상세주
+소가 하위 주소에 해당한다. 
+2.2 도로명주소법 전부개정 법률(안) 
+도시구조가 공중, 지하로 확장되고, 건물도 입체·대
+형화되면서 위치 찾기가 어려워지고, 기존 법상의 도로
+Figure 1. Address model overview in UML(ISO 19160-1 Addressing - Part 1: Conceptual model)
+www.dbpia.co.kr
+
+52
+김지영ㆍ양성철
+명주소나 국가지점번호 표기 지역 이외 장소에서 국민
+의 활동 증가로 이들 장소에 대한 위치 표시가 필요하
+게 되었다. 이에 물류의 이동과 위치 찾기를 보다 쉽고 
+편리하게 하고, 안전사고에 신속한 대응체계를 마련하
+기 위하여 행정안전부는 위치 표시를 강화한 도로명주
+소법 개정안을 입법 2018년 7월 입법 예고하였다.
+여기서 주목해야 할 부분은 주소를 이용하여 위치 안
+내체계를 마련한다는 부분으로, 주소정보라는 용어가 
+등장한 것이다. 개정안에서는 도로명, 도로명주소, 사물
+주소, 국가지점번호, 국가기초구역 등을 주소정보라 정
+의하고 있다(제2조제1항). 전 국토에 대한 위치를 표시
+하고자 사물주소, 국가지점번호, 국가기초구역까지 주
+소정보로 포함하고 있다. 결과적으로 주소정보는 ‘사람, 
+사물이나 장소의 위치를 직관적으로 인식할 수 있도록 
+문자로 표현한 것’으로 이해될 수 있다. 도로명주소법 
+개정안 제2조제10항에 사물주소(address of things, 
+AoT)는 건물 등이 아닌 시설물 등 사물의 위치를 특정
+하기 위해 개정안에 따라 부여된 주소로 정의되어 있
+다. 특히, 동 개정안 제22조를 보면 육교 및 철도 등 옥
+외시설에 설치된 승강기, 옥외 대피 시설 등 대피소, 버
+스 및 택시 정류장, 주차장 출입구 등에 사물주소가 부
+여될 수 있다. 
+그러나 개정안에는 사물주소의 구체적인 부여방안 
+등에 대한 정의는 포함하고 있지 않다. 아마도 이는 도
+로명주소와 같이 시행령에 포함이 될 것으로 보여진다.
+2.3 기구축된 사물주소 DB
+도로명주소 안내시스템에서는 2018년 구축된 육교승
+강기, 2019년 구축된 둔치주차장, 택시승강장, 지진옥
+외대피장소에 대한 사물주소 테이블을 포함한 속성자
+료 및 공간정보를 제공하고 있다. 제공되는 데이터를 
+주소 부여 대상별로 정리하면 Table 2와 같으며, 이때 
+속성자료는 테이블만 제공되는 데이터를 의미하고, 공
+간정보는 속성 및 도형자료가 제공되는 데이터로 육교
+는 출입구 공간정보의 속성자료에 사물주소가 포함되
+어 제공되고 있다. 자세히 살펴보면 Master라는 속성정
+보는 해당 시설물에 대한 기본적인 사항이 관리되고 있
+다. 다음으로 공간정보는 해당 시서물의 경계에 해당하
+는 정보, 출입구 정보, 출입구까지의 진입로 정보로 구
+성이되며, 택시승강장의 경우만 승강장의 위치(point)
+만 제공된다. 저자는 제공되는 데이터 중 둔치주차장에 
+대한 속성자료와 공간정보에 대한 개체-관계 다이어그
+램(entity-relation diagram, ERD)을 그려보았다(Fig. 
+2). 
+앞서 말한 바와 같이 각 시설물별로 속성이 약간 상
+이하긴 하지만 그 클래스 구성은 동일하며, 점(point)으
+로만 제공되는 택시승강장은 구역(AREA 클래스) 및 
+연결선(LINE 클래스)에 해당하는 클래스는 없다. 주소 
+부여 대상 클래스는 출입구나 사물주소 클래스와 1:N
+의 연결성을 가지고 있는 것으로, 이는 하나의 주소 부
+여 대상에 여러 개의 사물주소가 부여된 것으로 해석할 
+수 있다. 또한 출입구와 사물주소는 1:1의 관계로 이는 
+주소 부여 대상의 출입구별로 사물주소가 관리될 수 있
+음을 보여준다. 다시 말하면 주소 부여 대상의 출입구
+가 사물주소의 부여되는 위치이다. Fig. 3과 같이 제공
+되는 공간정보를 살펴보면 국회둔치주차장의 경우 두 
+곳의 출입구에 각각 사물주소가 부여되어 있으며 이 중
+에 한 출입구가 주출입구(대표주소)로 관리되고 있다. 
+사물주소 클래스를 살펴보면 사물주소는 건물에 부
+여되는 도로명주소와 유사하게 행정구역명, 도로명, 주
+소본번, 주소부번을 그 구성요소로 한다. 그러나 이들 
+구성요소를 어떤 조합으로 결합해야 하는지 주소 참조 
+No.
+Things
+Data and layers
+ Date
+Attribute data
+Spatial information
+1
+Pedestrian 
+overpass 
+elevator
+-
+Pedestrian overpass elevator, Pedestrian 
+overpass, Entrance
+2019.1.31.
+2
+Waterside 
+parking lot
+Master(TV_SPOT_RIVERPK_M),
+AoT(TV_SPOT_RIVERPK_ADRES)
+Boundary(TLV_SPOT_RIVERPK_AREA), 
+Entry-and-entry junction 
+line(TLV_SPOT_RIVERPK_LINE),  
+Entrance(TLV_SPOT_RIVERPK_POINT)
+2020.1.31.
+3
+Earthquake 
+evacuation 
+zone
+Master(TV_SPOT_EQOUT_M),
+AoT(TV_SPOT_EQOUT_ADRES)
+Boundary(TLV_SPOT_EQOUT_AREA), 
+Entry-and-entry junction line 
+(TLV_SPOT_EQOUT_LINE), 
+Entrance(TLV_SPOT_EQOUT_POINT)
+2020.1.31.
+4
+Taxi stop
+Master(TV_SPOT_TAXIST_M),
+AoT(TV_SPOT_TAXIST_ADRES)
+Location point 
+(TLV_SPOT_TAXIST_POINT)
+2020.1.31.
+Table 2. Data list of AoT
+www.dbpia.co.kr
+
+53
+체계(address reference system)가 제시되어 있지 않으
+며, 표기방법도 제시되어 있지 않다. 또한 국내 표준의 
+주소 모델(Fig. 1)에 포함된 생명주기(lifespan)와 관련
+된 정보가 사물주소 클래스에 미포함되어 있어 이에 대
+한 보완이 필요할 것이다.
+Figure 2. ERD of the waterside parking lot AoT DB
+Figure 3. Examples of AoT assigned to each entry point of this waterside parking lot(National assembly dunchi 
+parking lot)
+www.dbpia.co.kr
+
+54
+김지영ㆍ양성철
+3. 사물주소 정의 및 부여방안 
+본 연구에서는 도로명주소법 개정 및 사물주소 구축 
+확대에 대비하여 국내 표준에서 정의하는 주소 모델을 
+바탕으로 사물주소를 정의하고자 한다. 본 연구에서의 
+정의는 표준의 프로파일링(profiling)을 의미하는 것은 
+아니며, 주소 모델 클래스를 바탕으로 사물주소에 대한 
+개념을 제시함을 의미한다.
+사물주소는 건물 등이 아닌 시설물 등의 위치를 특정
+하기 위해 부여된 주소로, 주소정보(address) 클래스에 
+기존의 건물 등에 부여되는 도로명주소와 같이 포함된
+다. 사물주소 부여 대상(AddressableObject)은 LX 
+Spatial Information Research Institute(2020)에 제시되
+어 있으며 현재 행정안전부에서는 이에 대한 사물주소
+를 구축하여 제공 중이다. 
+그러나 이들 부여대상에는 실외에만 존재하는 시설
+물과 실내, 즉 건물 내부에도 존재하는 시설물로 구분
+할 수 있다(Table 3). 이를 구분하는 이유는 실외와 실
+내에 있는 시설물은 사물주소의 구성요소가 상이하다. 
+다시 말하면 실내에 있는 시설물은 도로명주소를 활용
+하여 사물주소가 부여되어야 하는 부분이 있어 구분될 
+필요가 있다. 이때, 각 시설물의 분류(category)는 국토
+지리정보원에서 제시하는 수치지도 지형지물 표준코드
+에 포함되지 않은 시설물(지형지물)이 다수 있어, 시설
+물의 주된 이용목적을 기반으로 구분하였다. 
+아직 도로명주소에 대한 국민적 이해가 확립되지 않
+은 상황에서 별도의 부여 원리는 혼란을 초래할 수 있
+을 것으로 판단된다. 따라서 도로명주소가 따르는 도로
+를 기반으로 거리 예측성으로 구분하는 기준을 그대로 
+적용하여 혼란을 최소화하면서 시설물의 위치를 표시
+하는 방법이 타당할 것이다. 단 사물주소의 도입 취지
+에 맞도록 기반 대상인 도로구간을 확대하여 위치를 보
+다 정밀하게 구분할 수 있도록 하여야 할 것이다. 이에 
+사물주소도 도로구간에 부여된 도로명과 도로구간의 
+시점에서 20m 간격으로 왼쪽에는 홀수, 오른쪽에는 짝
+수로 부여된 기초번호를 기반으로 그 주소가 부여된다. 
+사물주소 부여 대상의 출입구 등의 출입지점의 위치를 
+기준으로 실외에 있는 시설물의 사물주소는 해당 시설
+물의 출입지점이 연결된 도로구간에 부여된 도로명과 
+기초번호를 활용하여 사물번호가 할당된다. 이때 여러 
+개의 출입지점이 있는 시설물은 모든 출입지점에 주소
+를 부여하며, 대표주소(주출입구)는 도로구간의 진행방
+향을 고려하여 설정된다(Fig. 3 참고). 이때 도로명주소
+와의 구분을 위하여 사물주소는 주소 부여 대상의 사물
+유형이 주소 구성 요소로 추가된다. 다음으로 실내에 
+있는 시설물은 도로명주소(행정구역명, 도로명, 건물번
+호, 상세주소)를 활용하여 사물주소를 부여한다. 예를 
+들어 한국국토정보공사 4층에 위치한 무인정보단말기
+Category
+Addressable objects
+Outdoor
+Outdoor or Indoor
+Road/Traffic
+(도로/교통)
+Pedestrian overpass elevator(육교승강기)
+Bus stop(버스정류장)
+Taxi stop(택시승강장)
+Waterside parking lot(둔치주차장)
+Rest area(졸음쉼터)
+Life/Leisure
+(생활/여가)
+Campsite(야영장)
+Climbing walls(암벽장)
+Comprehensive sports complex(종합체육시설)
+Vest-pocket park(소공원)
+Bike rack(자전거보관대)
+Public phone Booth(공중전화부스)
+Kiosk(무인정보단말기)
+Recycling bin(재활용분리수거함)
+Fountain(분수대)
+Economy/Industry
+(경제/산업)
+Solar power facility(태양광발전시설)
+Food truck area(푸드트럭영업지역)
+Electric vehicle charging station(전기차충전소)
+Public WiFi(공공와이파이)
+Disaster/safety
+(재난/안전)
+Earthquake evacuation zone(지진옥외대피장소)
+Tsunami evacuation zone(지진해일대피장소)
+Forest fire guard post(산불감시초소)
+Movement control guard post(이동통제초소)
+Lifesaving(인명구조함)
+Emergency water supply facility(비상급수시설)
+Culture/Tourism
+(문화/관광)
+Monument(기념물)
+Outdoor rock(암벽장)
+Outdoor theater(야외공연장)
+Table 3. Addressable objects of AoT 
+www.dbpia.co.kr
+
+55
+의 경우는 한국국토정보공사의 도로명주소인 ‘전라북
+도 전주시 덕진구 기지로 120’와 ‘401호 무인정보단말
+기’로 사물주소(전라북도 전주시 덕지구 기지로 120, 
+401호 무인정보단말기)가 부여된다(Fig. 4). 
+다시 말하면 실외에 있는 시설물의 사물주소는 행정
+구역명, 도로명, 기초번호를 이용한 사물번호, 주소 부
+여 대상을 구분하는 사물유형으로 구성된다. 실내에 있
+는 시설물의 사물주소는 건물에 부여된 도로명주소와 
+사물유형이 그 구성요소이다. 이때, 사물주소 부여 대
+상 시설물의 명칭이 별칭으로 이는 사물주소를 대신하
+여 사용될 수 있다. 
+Fig. 5와 같이 택시승강장은 해당 관리시스템에 관리
+Figure 4. Examples of AoT assigned to addressable 
+objects in indoor
+Figure 5. AoT assigned to a taxi stop (‘CGV강남점 
+앞’)
+되는 ‘CGV강남점 앞’이 별칭으로 사용되어 사물주소 
+‘서을특별시 강남구 강남대로 436 택시승강장’를 대신
+하여 시설물의 위치를 표시할 때 사용될 수 있다.
+사물주소는 부여 대상인 시설물의 위치를 정확하게 
+표시하는 것이 목적으로 건물에 부여되는 도로명주소
+에 있는 기초번호(본번)에 ‘-부번’을 사용하는 건물번
+호나 건물군과 같이 복수의 대상을 하나의 주소로 표기
+하는 것을 지양하고 사물번호로 그 시설물의 위치를 지
+정할 수 있도록 한다. 따라서 상위-하위관계가 없으며, 
+실내에 있는 시설물은 그 위치의 특성상 도로명주소(행
+정구역명, 도로명, 건물번호, 상세주소(있는 경우))가 
+상위주소, 사물유형이 하위주소가 된다 (Table 4). 
+Class
+Example
+AddressComponent
+Outdoor
+Administrative district name, Road name, Thing  number, Thing type
+Indoor
+Administrative district name, Road name, Building number (Detailed 
+address), Thing type
+ReferenceObject
+Administrative district, Road section, Building, Thing
+AddressedPeriod
+Assignment date, Notification date, Modification date and disuse data
+AddressSpecification
+Road Name Address Act (Revision)
+AddressAlias
+Thing name
+Parent - Child
+Outdoor
+-
+Indoor
+Administrative district name, Road name, Building number (Detailed 
+address) - Thing type
+Table 4. Classes of AoT based on standards
+Figure 6. Examples of AoT marked with address component 
+www.dbpia.co.kr
+
+56
+김지영ㆍ양성철
+이들 사물주소 구성요소는 Fig. 6과 같은 규칙(주소 
+참조 체계)으로 조합되어 표기된다. 모든 구성요소가 
+행정구역명, 도로명, 사물번호, 사물유형 순서대로 나열
+되며, 각 구성요소 사이에 빈칸을 두어 구분한다. 실내
+에 있는 경우는 도로명주소 표기 후 사물유형 순서로 
+나열하며, 도로명주소와 사물유형 사이에 빈칸을 두어 
+구분한다.
+4. 결론 및 정책제언
+본 연구에서는 사물주소가 포함된 도로명주소 개정
+안이 입법 예고되어 있고, 현재 시범사업으로 구축된 
+사물주소가 배포되고 있는 상황에서 사물주소에 대한 
+개념을 국내 주소표준에 기반하여 정의하고, 이에 대한 
+부여방안 및 표기방법을 제안하였다. 
+도로명주소법 전부개정에 앞서 현행 배포되고 있는 
+사물주소DB를 분석하여 선행연구에서 제시된 사물주
+소 부여 대상을 구분하여 사물주소 부여 방안을 제시하
+고, 주소 부여 대상별 주소 구성 요소 및 주소 참조 체
+계(표기방법)을 제안하였다는데 의의가 있다. 향후 제
+안된 사물주소 부여방안 및 표기방법 등을 행정안전부
+에서 시행하는 주소체계 고도화 시범사업 및 사물주소 
+구축사업에 적용하여 그 활용 가능성을 지속적으로 점
+검하고 보완하여야 할 것이다. 나아가 그 결과가 도로
+명주소법 관련 법령 개정에 반영될 수 있도록 하여야 
+하겠다. 
+마지막으로 본 연구에서는 제안된 사물주소 및 부여
+방안의 안착을 위하여 다음과 같은 정책을 제언하고자 
+한다. 
+첫째, 사물주소는 공법상으로 관리되는 도로명주소
+와 달리 국민의 안전과 관련된 시설물에 부여된다. 즉 
+기초번호로 할당되는 사물번호는 그 시설물의 위치를 
+특정하는 역할을 할 수 있어야 한다. 다시 말하면 도로
+명주소에서 종속구간으로 인한 건물번호의 부번이 할
+당되는 문제가 사물주소에서 발생되지 않도록 해야할 
+것이다. 이를 위해서는 종속구간을 주소를 부여할 때 
+주소 기반 대상인 도로구간으로 변경하여 도로명을 부
+여하는 일이 선행되어야 한다. 
+둘째, 사물주소에는 사물유형이 주소 구성요소로 포
+함이 된다. 그러나 시설물은 그 관리 기관이나 관련 법
+령에서 정의하고 있는 용어가 다르다. 즉 관계 기관과
+의 협의를 통하여 사물유형에 대한 국문 및 영문 표기
+법을 통일하고, 이를 데이터베이스화하여 행정표준코
+드와 같은 표준코드로 관리가 될 수 있는 법적 제도가 
+마련되어야 할 것이다. 
+셋째, 현재 사물주소는 도로명주소 안내시스템의 공
+지사항을 통하여 유통되고 있다. 사물주소의 구축, 유
+지관리, 유통에 대한 전반적인 연구가 진행될 필요가 
+있다. 현재는 한국국토정보공사에서 사물주소를 구축
+하고, 이를 지자체 담당자가 확인하여 사물주소를 부여
+하고 국가주소관리시스템에 탑재가 되는 프로세스로 
+생산되고 있다. 그러나 이들 사물주소 및 관련 공간정
+보를 도로명주소기본도와 어떤 관계 정의를 통하여 관
+리하고 유통할 것인지에 대한 보완이 필요해 보인다. 
+나아가 갱신을 통하여 지속적인 유지관리를 위한 대책
+이 마련되어야 할 것이다. 
+넷째, 국가 공간정보의 구축을 담당하는 국토지리정
+보원의 수치지도나 연속수치지도와의 연계 활용을 고
+려할 필요가 있다. 이를 위하여 수치지도 지형지물 표
+준코드에 사물주소 부여 대상에 해당하는 시설물이 고
+려될 수 있도록논의가 필요할 것이다. 또한 사물주소
+(도로명주소 포함)와 국토교통부에서 관리하는 공간등
+록번호나 UFID가 연계되어야 할 것이다.
+감사의 글
+이 논문은 2020년도 정부(교육부)의 재원으로 한국
+연구재단의 지원을 받아 수행된 기초연구사업임(No. 
+2020R1I1A1A01075363)
+References
+1. Bang, Y. S., Ga, C. O. and Yu, K. Y., 2012, 
+Matching and attribute conflating method for linking 
+the digital map with the road name address system 
+- focused on the road centerline layer, Journal of the 
+Korean Society of Surveying, Geodesy, Photogrammetry 
+and Cartography, Vol. 30, No. 4, pp. 379-388.
+2. Bang, Y. S. and Yu, K. Y., 2016, Line matching 
+mehtod for linking wayfinding process with the road 
+name address system, Journal of the Korean society 
+for geospatial information science, Vol. 24, No. 4, 
+pp. 115-123.
+3. Choi, H. J., 2015, A Study on the Utilization Model 
+for Road Name Address Base Map Based on serial 
+Cadastral Map, Ph. D. Dissertation, Mokpo National 
+University, pp. 1-103.
+4. Jincheon-gun, 2019, Enhancement of address 
+system and pilot project for the creation of the 4th 
+industry, Research report, LX Spatial Information 
+Research Institute, Korea, pp. 49-61. 
+www.dbpia.co.kr
+
+57
+5. Kim, J. and Kim, J, 2017, Extraction of landmarks 
+using building attribute data for pedestrian navigation 
+service, Journal of the Korean Society of Civil 
+Engineering, Vol. 37, No. 1, pp. 203-215. 
+6. Kim, J. Y. and Lee, J. B., 2016, Automated areal 
+feature matching in different spatial data-sets, 
+Journal of the Korean society for geospatial 
+information science, Vol. 24, No. 1, pp. 89-98.
+7. Kim, J. Y., Lee, J. B. and Yeom, J. H, 2016, 
+Detection of updating feature in building layer of 
+korea address information system using UAV image, 
+Journal of the Korean Society of Cadastre, Vol. 32, 
+No. 1, pp. 121-131.
+8. Kim, J., Yu, K. and Bang, Y, 2018, A multi-criteria 
+decision-making approach for geometric matching of 
+areal objects, Transactions in GIS, Vol. 22, No. 1, 
+pp. 269–287.
+9. Kwak, J. Y., 2014, A study on road names of 
+Hamyang-gun, 
+International 
+Language 
+and 
+Literature, Vol. 29, pp. 127-162.
+10. LX Spatial Information Research Institute, 2020, A 
+Study on the concept of address information 
+according to the advanced address yystem, 
+Research 
+report, 
+Daegu 
+University 
+R&DB 
+Foundation, Korea, pp. 15-50.
+11. Ministry of Land, Infrastructure and Transport, 2014, 
+Framework 
+act 
+on 
+national 
+spatial 
+data 
+infrastructure, Act No. 12736. 
+12. Ministry of the Interior and Security, 2018, Road 
+name address Act(Revison), Ministry of the Interior 
+and Security, https://www.mois.go.kr/
+13. Park, B. C., 2007, A Study on the front part of road 
+names: focusing on the name of alley in Cheong-ju 
+city, Korean Semantics, Vol. 22, pp. 47-72.
+14. Road name address guidance system, http:// 
+www.juso.go.kr/
+15. Roh, H. J., 2009, Assessment and improvement 
+method 
+of 
+position 
+accuracy 
+of 
+geocoding 
+application for new address system in Korea, 
+Journal of the Korean Cartographic Association, Vol. 
+9, No. 1, pp. 63-72.
+16. Seok, S and Lee, J., 2016,  Development of 
+geocoding 
+and 
+reverse 
+geocoding 
+method 
+implemented 
+for 
+street-based 
+addresses 
+in 
+Korea, Journal of the Korean Society of Surveying, 
+Geodesy, Photogrammetry and Cartography, Vol. 
+34, No. 1, pp. 33-42.
+17. Son, H. H., 2014, Problems of the current ‘road 
+name-based-address 
+system’ 
+and 
+problem 
+resolution alternative, Journal of the Place Name 
+Society of Korea, Vol. 20, pp. 161-187.
+18. Song, H., 2017, The general characteristics of 
+boulevards in South Korea, Journal of the Korean 
+Cartographic Association, Vol. 17, No. 1, pp. 41-58.
+19. What3words, http://what3words.com/
+20. Where(어디야), https://waynow.info/
+21. Yang, S. C., 2017, A study on the improvement of 
+address systems through the unstructured news 
+data analysis, Journal of the Korean Society of 
+Cadastre, Vol. 33, No. 2, pp. 151-160.
+22. Yeom, J. H., Huh, Y. and Lee, J., 2014, Building 
+matching analysis and new building update for the 
+integrated use of the digital map and the road name 
+address map, Journal of the Korean Society of 
+Surveying, Geodesy, Photogrammetry and Cartography, 
+Vol. 32, No. 5, pp. 459-467.
+www.dbpia.co.kr
