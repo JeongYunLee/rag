@@ -37,11 +37,6 @@ def check_if_key_exists(key):
 
 
 # API KEY 설정
-os.environ["LANGCHAIN_TRACING_V2"] = "true"
-os.environ["LANGCHAIN_ENDPOINT"] = "https://api.smith.langchain.com"
-os.environ["LANGCHAIN_PROJECT"] = "SELF_LEARNING_GPT"
-os.environ["OPENAI_API_KEY"] = 'sk-proj-QuWfpJZy0Yt2AFVxQu9bT3BlbkFJT270vIPgUAYjWZtSKD0r' 
-os.environ['LANGCHAIN_API_KEY'] = "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"
 
 # secrets.toml 파일에 저장된 API KEY를 사용할 때
 # os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
