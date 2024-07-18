@@ -1,3 +1,4 @@
 env/
 .env
 langchain-kr/
+juso-chat-bot-v0.1/chroma/chroma.sqlite3
