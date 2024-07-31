@@ -46,16 +46,6 @@ if openai_api_key:
 if langchain_api_key:
     st.session_state["langchain_api_key"] = langchain_api_key
 
-# LangSmith 설정
-# client = Client(
-#     api_url=langchain_endpoint, api_key=st.session_state["langchain_api_key"]
-# )
-
-# ls_tracer = LangChainTracer(project_name="project_name", client=client)
-# run_collector = RunCollectorCallbackHandler()
-# cfg = RunnableConfig()
-# cfg["callbacks"] = [ls_tracer, run_collector]
-
 # logging.langsmith("240717") 
 
 #############################################################
@@ -63,7 +53,6 @@ if langchain_api_key:
 #############################################################
 st.set_page_config(page_title="Address ChatBot", page_icon="🤖")
 st.title("Address ChatBot")
-
 
 ##############################################################################################################
 ################################################Retriever#####################################################
