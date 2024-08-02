@@ -24,7 +24,6 @@ from typing import TypedDict
 from langgraph.graph import END, StateGraph
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.errors import GraphRecursionError
-from langchain_community.tools.tavily_search import TavilySearchResults
 ## Google Search
 from langchain_google_community import GoogleSearchAPIWrapper
 from langchain_core.tools import Tool
@@ -101,20 +100,20 @@ def retrieve_document(state: GraphState) -> GraphState:
 ##############################################################################################################
 chat = ChatOpenAI(model="gpt-4o", api_key=openai_api_key)
 
-def relevance_message(context, question):
+def relevance_message(answer, question):
     messages = [
         SystemMessage(content="""
-            너는 Query와 Document를 비교해서 ['grounded', 'notGrounded', 'notSure'] 셋 중 하나의 라벨을 출력하는 모델이야.
+            너는 Query와 Answer를 비교해서 ['grounded', 'notGrounded', 'notSure'] 셋 중 하나의 라벨을 출력하는 모델이야.
 
-            'grounded': Compare the Query and the Document. If the Document includes content that can be used to generate an answer to the Query, output the label 'grounded'.
-            'notGrounded': Compare the Query and the Document. If the Document not includes content that can be used to generate an answer to the Query, output the label 'notGrounded'.
-            'notSure': Compare the Query and the Document. If you cannot determine whether the Document includes content that can be used to generate an answer to the Query, output the label .notSure'.
+            'grounded': Compare the Query and the Answer. If the Answer includes content that can be used to generate an answer to the Query, output the label 'grounded'.
+            'notGrounded': Compare the Query and the Answer. If the Answer not includes content that can be used to generate an answer to the Query, output the label 'notGrounded'.
+            'notSure': Compare the Query and the Answer. If you cannot determine whether the Answer includes content that can be used to generate an answer to the Query, output the label .notSure'.
             
             너의 출력은 반드시 'grounded', 'notGrounded', 'notSure' 중 하나여야 해. 띄어쓰기나 대소문자 구분 등 다른 형식이나 추가적인 설명 없이 오직 하나의 라벨만 출력해줘.
         """),
         HumanMessage(content=f"""
-            [Document]
-            {context}
+            [Answer]
+            {answer}
 
             [Query]
             {question}
@@ -123,7 +122,7 @@ def relevance_message(context, question):
     return messages
 
 def relevance_check(state: GraphState) -> GraphState:
-    messages = relevance_message(state["context"], state["question"])
+    messages = relevance_message(state["answer"], state["question"])
     response = chat.invoke(messages)
     return GraphState(
         relevance=response.content,

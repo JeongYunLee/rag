@@ -25,9 +25,6 @@ from langgraph.graph import END, StateGraph
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.errors import GraphRecursionError
 from langchain_community.tools.tavily_search import TavilySearchResults
-## Google Search
-from langchain_google_community import GoogleSearchAPIWrapper
-from langchain_core.tools import Tool
 ## chainlit
 import chainlit as cl
 from typing import Dict, Optional
@@ -416,7 +413,7 @@ app = workflow.compile(checkpointer=memory)
 async def run_convo(message: cl.Message):
     
     config = RunnableConfig(
-        recursion_limit=20, thread_id = 'CORRECTIVE-SEARCH-RAG',
+        recursion_limit=20, configurable={"thread_id": "CORRECTIVE-SEARCH-RAG"}
     )
 
     # AgentState 객체를 활용하여 질문을 입력합니다.
